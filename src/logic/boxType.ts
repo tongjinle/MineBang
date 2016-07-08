@@ -1,0 +1,4 @@
+enum BoxType{
+    num,
+    boom
+}
