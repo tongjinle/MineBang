@@ -116,7 +116,30 @@ class Main extends egret.DisplayObjectContainer {
      * 创建游戏场景
      * Create a game scene
      */
+    private boxMap:BoxMap;
+    private myGame:Game;
+    private boxMapSp:BoxMapSp;
+    private hubSp:HubSp;
+
     private createGameScene():void {
+        var myGame = this.myGame = Game.getIns();
+        myGame.bind();
+        myGame.startGame();
+
+        var boxMap = this.boxMap = myGame.boxMap;
+        console.log(boxMap);
+
+        var boxMapSp = this.boxMapSp = new BoxMapSp(boxMap);
+        this.addChild(boxMapSp);
+
+        console.log(this.stage.width,this.stage.stageWidth);
+
+        var hubSp = this.hubSp = new HubSp();
+        hubSp.y = this.stage.height - 200;
+        hubSp.totalCount = boxMap.width * boxMap.height - boxMap.boomCount;
+        hubSp.cleanCount = boxMap.cleanCount;
+        hubSp.status = 'playing';
+        this.addChild(hubSp);
         
         return;
         // var sky:egret.Bitmap = this.createBitmapByName("bg_jpg");

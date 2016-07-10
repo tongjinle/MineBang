@@ -1,6 +1,6 @@
 class Config {
-    static size: number = 50;
+    static size: number = 64;
     static width: number = 10;
     static height: number = 8;
-    static ratio: number = .3;
+    static ratio: number = .2;
 }

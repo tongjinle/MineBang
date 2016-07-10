@@ -4,16 +4,15 @@
 class Game extends egret.EventDispatcher{
     static _game:Game;
 
-    map:Map;
+    boxMap:BoxMap;
 
     constructor() {
         super();
-        this.map = new Map(Config.width,Config.height,Config.ratio);
     }
 
     static getIns(){
-        this._game = this._game || new Game();
-        return this._game;
+        Game._game = Game._game || new Game();
+        return Game._game;
     }
 
    on(eventName:string,fn:Function,self:any){
@@ -28,5 +27,19 @@ class Game extends egret.EventDispatcher{
    fire(eventName:string,data:any){
 		this.dispatchEvent(new egret.Event(eventName, false, false, data));
 	}
+
+    // 
+    startGame(){
+        this.boxMap = new BoxMap(Config.width,Config.height,Config.ratio);
+        this.boxMap.firstTip();
+    }
+
+    bind(){
+        Game.getIns().on('game.pass',()=>{
+            (RES.getRes('win_mp3') as egret.Sound).play(0,1);
+            Game.getIns().fire('game.over',null);
+        },this);
+    }
+   
 
 }
