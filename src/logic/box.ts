@@ -2,15 +2,17 @@
  * Box
  */
 abstract class Box {
-    constructor(public x: number, public y: number, public type: BoxType, public isWarn = false) {
+    constructor(public x: number, public y: number, public type: BoxType, public isWarn = false, public isWarnWrong = false) {
         this.touchDict = {};
         this.touchDict[BoxType.num] = (box) => {
             var numBox: NumBox = box as NumBox;
             if (!numBox.isClean) {
                 numBox.isClean = true;
+                // 扩散
+                Game.getIns().fire('numBox.expand', numBox);
+            } else {
+                Game.getIns().fire('numBox.batch', numBox);
             }
-            // 扩散
-            Game.getIns().fire('numBox.expand', numBox);
 
         };
 
@@ -18,13 +20,9 @@ abstract class Box {
             var boomBox: BoomBox = box as BoomBox;
             if (!boomBox.isBoom) {
                 boomBox.isBoom = true;
-                (RES.getRes('crash2_mp3') as egret.Sound).play(0,1);
+                Game.getIns().fire('boomBox.boom', boomBox);
             }
         };
-    }
-
-    onWarn() {
-        this.isWarn = !this.isWarn;
     }
 
     private touchDict: { [boxType: number]: (box: Box) => void };
@@ -35,6 +33,7 @@ abstract class Box {
 
     warn() {
         this.isWarn = !this.isWarn;
+        Game.getIns().fire('box.warn', this);
     }
 
 }

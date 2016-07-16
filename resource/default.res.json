@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"keys": "bg_jpg,egret_icon_png,description_json,number_json,crash2_mp3,win_mp3",
+			"keys": "bg_jpg,egret_icon_png,description_json,crash2_mp3,win_mp3,number_json",
 			"name": "preload"
 		}
 	],
@@ -25,7 +25,7 @@
 			"url": "assets/number.json",
 			"type": "sheet",
 			"name": "number_json",
-			"subkeys": "0_png,1_png,2_png,3_png,4_png,5_png,6_png,7_png,bomb_png,flag_png,none_png"
+			"subkeys": "0_png,1_png,2_png,3_png,4_png,5_png,6_png,7_png,bomb_png,fail_png,flag_png,none_png"
 		},
 		{
 			"url": "assets/crash2.mp3",
