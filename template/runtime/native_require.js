@@ -5,13 +5,12 @@ var game_file_list = [
 	"libs/modules/egret/egret.js",
 	"libs/modules/egret/egret.native.js",
 	"libs/modules/game/game.js",
-	"libs/modules/game/game.native.js",
 	"libs/modules/tween/tween.js",
 	"libs/modules/res/res.js",
-	"bin-debug/config.js",
-	"bin-debug/LoadingUI.js",
 	"bin-debug/logic/box.js",
+	"bin-debug/sprite/hubSp.js",
 	"bin-debug/logic/boomBox.js",
+	"bin-debug/config.js",
 	"bin-debug/logic/boxMap.js",
 	"bin-debug/logic/boxType.js",
 	"bin-debug/logic/game.js",
@@ -19,7 +18,7 @@ var game_file_list = [
 	"bin-debug/Main.js",
 	"bin-debug/sprite/boxMapSp.js",
 	"bin-debug/sprite/boxSp.js",
-	"bin-debug/sprite/hubSp.js",
+	"bin-debug/LoadingUI.js",
 	//----auto game_file_list end----
 ];
 
